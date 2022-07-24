@@ -1,0 +1,140 @@
+{% extends 'common/base_wide.html' %}
+{% block content %}
+
+<ul class="title-depth">
+    <li>
+        Entity
+    </li>
+</ul>
+<!-- //title-depth end -->
+
+<div class="srchWrap">
+    <ul class="srch-filter">
+        <li>
+            <a href="#"></a>
+            등록일순
+        </li>
+        <li>
+            <a href="#"></a>
+            이름순
+        </li>
+    </ul>
+    <div class="srch-bar">
+        <img src="/static/images/icon/ic-srch-g.png" alt="">
+        <p class="placeholder">엔티티명으로 검색</p>
+        <input type="text" placeholder="검색어 입력"/>
+    </div>
+</div>
+<!-- //srchWrap end -->
+<script>
+    // url 처리
+    var nowURL = window.location.pathname;
+    console.log(nowURL)
+    if(nowURL.includes('/datalake/entity/list/date')) {
+        $('.srch-filter li').eq(0).addClass('on');
+    } else if(nowURL.includes('/datalake/entity/list/subject')) {
+        $('.srch-filter li').eq(1).addClass('on');
+    }
+    // srch-bar on/off
+    $('.srch-bar').hover(() => {
+        $('.srch-bar .placeholder').hide();
+        $('.srch-bar input').show();
+        $('.srch-bar input').focus();
+    },() => {
+        if($('.srch-bar input').focus()){
+            $('.srch-bar .placeholder').hide();
+            $('.srch-bar input').show();
+        }
+    });
+    $('.srch-bar input').blur(() => {
+        $('.srch-bar input').hide();
+        $('.srch-bar .placeholder').show();
+    });
+</script>
+
+<div class="boardWrap">
+    {% if entity_list %}
+    <ul class="board-wide-list entity-list w1500">
+        <li>
+            <p class="no">번호</p>
+            <p class="subject">엔티티명</p>
+            <p class="entry">동의어</p>
+            <p class="date">등록일</p>
+        </li>
+        {% for entity in entity_list %}
+        <li>
+            <a href="{% url 'datalake:entity_detail' request.session.cSub request.session.cdSub entity.id %}"></a>
+            <p class="no">{{ forloop.counter }}</p>
+            <p class="subject">
+                {{ entity.subject }}
+                {% if entity.synonym_set.count > 0 %}
+                <span class="cnt">{{ entity.synonym_set.count }}</span>
+                {% endif %}
+            </p>
+            <ul class="entry">
+                <li>{{ entity.entry }}</li>
+                {% for synonym in entity.synonym_set.all %}
+                <li>
+                    {{ synonym.entry }}
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="date">{{ entity.create_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- //board-wide-list end -->
+
+    <div class="paginationWrap w1500">
+        <a href="{% url 'datalake:entity_create' %}"><div class="btn btn-entity-add">+</div></a>
+        <ul class="pagination">
+            <!-- 이전페이지 -->
+            {% if entity_list.has_previous %}
+            <li>
+                <a href="?page={{ entity_list.previous_page_number }}"></a>
+                이전
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a tabindex="-1" aria-disabled="true" href="#"></a>
+                이전
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in entity_list.paginator.page_range %}
+            {% if page_number >= entity_list.number|add:-5 and page_number <= entity_list.number|add:5 %}
+            {% if page_number == entity_list.number %}
+            <li class="active" aria-current="page">
+                <a href="?page={{ page_number }}"></a>
+                {{ page_number }}
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ page_number }}"></a>
+                {{ page_number }}
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if entity_list.has_next %}
+            <li>
+                <a href="?page={{ entity_list.next_page_number }}"></a>
+                다음
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a tabindex="-1" aria-disabled="true" href="#"></a>
+                다음
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <!-- //paginationWrap end -->
+    {% else %}
+    <p>등록된 엔티티가 없습니다.</p>
+    {% endif %}
+</div>
+<!-- //boardWrap end -->
+
+{% endblock %}

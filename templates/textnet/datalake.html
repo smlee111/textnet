@@ -1,0 +1,55 @@
+{% extends 'common/base_full.html' %}
+{% block content %}
+
+<p class="title">데이터 카테고리</p>
+{% if cate_list %}
+<ul class="dataCate-list main on">
+    {% for cate in cate_list %}
+    <li class="{{ cate.subject }}">{{ cate.value }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% for cate in cate_list %}
+<ul class="dataCate-list depth {{ cate.subject }}">
+    <li class="back">back</li>
+    {% for depth in cate_depth_list %}
+    {% if cate.id == depth.category_id %}
+    <li>
+        <a href="{% url 'datalake:home' cate.subject depth.subject %}"></a>
+        {{ depth.value }}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endfor %}
+
+<script>
+    // depth fadeIn/Out
+    $('.dataCate-list.main li.text').click(function(){
+        $('.dataCate-list.main').hide();
+        $('.dataCate-list.depth').hide();
+        $('.dataCate-list.depth.text').fadeIn(200);
+    });
+    $('.dataCate-list.main li.image').click(function(){
+        $('.dataCate-list.main').hide();
+        $('.dataCate-list.depth').hide();
+        $('.dataCate-list.depth.image').fadeIn(200);
+    });
+    $('.dataCate-list.main li.mp3').click(function(){
+        $('.dataCate-list.main').hide();
+        $('.dataCate-list.depth').hide();
+        $('.dataCate-list.depth.mp3').fadeIn(200);
+    });
+    $('.dataCate-list.main li.mp4').click(function(){
+        $('.dataCate-list.main').hide();
+        $('.dataCate-list.depth').hide();
+        $('.dataCate-list.depth.mp4').fadeIn(200);
+    });
+    $('.dataCate-list.depth .back').click(function(){
+        $('.dataCate-list.depth').hide();
+        $('.dataCate-list.main').fadeIn(200);
+    });
+</script>
+
+{% endblock %}

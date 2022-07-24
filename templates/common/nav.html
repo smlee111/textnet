@@ -1,0 +1,124 @@
+{% load static %}
+{% load socialaccount %}
+
+<div class="nav">
+    <a href="/"><p class="logo"><img src="{% static 'images/keycap.png' %}" alt="logo" class="symbol"><span class="key">TEXT</span>NET</p></a>
+    <ul class="menu">
+        <li>
+            <a href="/"></a>
+            홈
+        </li>
+        <li>
+            <a href="{% url 'textnet:project' %}"></a>
+            프로젝트
+        </li>
+        <li>
+            <a href="{% url 'textnet:datalake' %}"></a>
+            데이터 레이크
+        </li>
+        {% if user.is_superuser %}
+        <li>
+            <a href="{% url 'admin:index' %}"></a>
+            관리자
+        </li>
+        {% endif %}
+    </ul>
+    <ul class="nav-user">
+        {% if user.is_authenticated %}
+        <li class="thumb"></li>
+        <li class="info">
+            <p class="name">{{ user.username }}</p>
+            <p class="status"><span></span>online</p>
+        </li>
+        <li class="btn-pop-my-open">
+        </li>
+        {% else %}
+        <li>
+            <a href="#"></a>
+            <img src="{% static 'images/icon/ic-join-g.png' %}" alt="">
+            <p class="txt">join</p>
+        </li>
+        <li>
+            <a href="{% provider_login_url 'google' %}"></a>
+            <img src="{% static 'images/icon/ic-login-g.png' %}" alt="">
+            <p class="txt">login</p>
+        </li>
+        {% endif %}
+    </ul>
+    <ul class="nav-pop-my">
+        <li>
+            <a href="{% url 'common:logout' %}"></a>
+            <img src="{% static 'images/icon/ic-logout-g.png' %}" alt="">
+            <p class="txt">logout</p>
+        </li>
+        <li>
+            <a href="#"></a>
+            <img src="{% static 'images/icon/ic-user-g.png' %}" alt="">
+            <p class="txt">mypage</p>
+        </li>
+        <li class="btn-pop-my-close">
+            <img src="{% static 'images/icon/ic-close-g.png' %}" alt="">
+        </li>
+    </ul>
+</div>
+
+
+<script>
+// url on/off
+nowUrl = window.location.pathname;
+console.log(nowUrl);
+if(nowUrl == ('/')) {
+    $('.nav .menu li').eq(0).addClass('on');
+} else if(nowUrl.includes('/project/')) {
+    $('.nav .menu li').eq(1).addClass('on');
+} else if(nowUrl.includes('/datalake/entity') || nowUrl.includes('/datalake/intent')) {
+    $('.nav .menu li').eq(2).addClass('on');
+    $('.nav').addClass('nav-up');
+} else if(nowUrl.includes('/datalake/')) {
+    $('.nav .menu li').eq(2).addClass('on');
+} 
+
+// 스크롤 nav hide
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('.nav').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('.nav').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('.nav').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+
+// 마이메뉴
+$('.btn-pop-my-close').click(function(){
+    $('.nav-pop-my').css('right','-100%');
+});
+$('.btn-pop-my-open').click(function(){
+    $('.nav-pop-my').css('right','0');
+});
+</script>

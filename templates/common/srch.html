@@ -1,0 +1,28 @@
+<div class="srchWrap">
+    <ul class="srch-filter">
+        <li class="on">등록일순</li>
+        <li>이름순</li>
+    </ul>
+    <div class="srch-bar">
+        <img src="/static/images/icon/ic-srch-g.png" alt="">
+        <p class="placeholder">search</p>
+        <input type="text" placeholder="type here"/>
+    </div>
+</div>
+<!-- //srchWrap end -->
+<script>
+    $('.srch-bar').hover(() => {
+        $('.srch-bar .placeholder').hide();
+        $('.srch-bar input').show();
+        $('.srch-bar input').focus();
+    },() => {
+        if($('.srch-bar input').focus()){
+            $('.srch-bar .placeholder').hide();
+            $('.srch-bar input').show();
+        }
+    });
+    $('.srch-bar input').blur(() => {
+        $('.srch-bar input').hide();
+        $('.srch-bar .placeholder').show();
+    });
+</script>

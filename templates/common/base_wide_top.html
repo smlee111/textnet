@@ -1,0 +1,74 @@
+{% load static %}
+{% load socialaccount %}
+
+<div class="wide-top">
+    <ul class="menu">
+        <li class="home">
+            <a href=""></a>
+            <img src="/static/images/icon/ic-dl3-c.png" alt="">
+            <p class="logo">DATA LAKE</p>
+        </li>
+        <li>
+            <a href="#"></a>
+            <img src="/static/images/icon/ic-srch-g.png" alt="">
+        </li>
+        <li>
+            <a href="#"></a>
+            <img src="/static/images/icon/ic-qm-g.png" alt="">
+            <p class="txt">Guide</p>
+        </li>
+        <li>
+            <a href="#"></a>
+            <img src="/static/images/icon/ic-del-g.png" alt="">
+            <p class="txt">delete</p>
+        </li>
+    </ul>
+    <ul class="nav-user">
+        {% if user.is_authenticated %}
+        <li class="thumb"></li>
+        <li class="info">
+            <p class="name">{{ user.username }}</p>
+            <p class="status"><span></span>online</p>
+        </li>
+        <li class="btn-pop-my-open">
+        </li>
+        {% else %}
+        <li>
+            <a href="#"></a>
+            <img src="{% static 'images/icon/ic-join-g.png' %}" alt="">
+            <p class="txt">join</p>
+        </li>
+        <li>
+            <a href="{% provider_login_url 'google' %}"></a>
+            <img src="{% static 'images/icon/ic-login-g.png' %}" alt="">
+            <p class="txt">login</p>
+        </li>
+        {% endif %}
+    </ul>
+    <ul class="nav-pop-my">
+        <li>
+            <a href="{% url 'common:logout' %}"></a>
+            <img src="{% static 'images/icon/ic-logout-g.png' %}" alt="">
+            <p class="txt">logout</p>
+        </li>
+        <li>
+            <a href="#"></a>
+            <img src="{% static 'images/icon/ic-user-g.png' %}" alt="">
+            <p class="txt">mypage</p>
+        </li>
+        <li class="btn-pop-my-close">
+            <img src="{% static 'images/icon/ic-close-g.png' %}" alt="">
+        </li>
+    </ul>
+</div>
+<!-- //wide-top end -->
+
+<script>
+// 마이메뉴
+$('.btn-pop-my-close').click(function(){
+    $('.nav-pop-my').css('right','-100%');
+});
+$('.btn-pop-my-open').click(function(){
+    $('.nav-pop-my').css('right','0');
+});
+</script>

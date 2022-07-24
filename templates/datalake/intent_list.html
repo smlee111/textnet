@@ -1,0 +1,124 @@
+{% extends 'common/base_wide.html' %}
+{% block content %}
+
+<div class="srchWrap">
+    <ul class="srch-filter">
+        <li>
+            <a href="#"></a>
+            등록일순
+        </li>
+        <li>
+            <a href="#"></a>
+            이름순
+        </li>
+    </ul>
+    <div class="srch-bar">
+        <img src="/static/images/icon/ic-srch-g.png" alt="">
+        <p class="placeholder">인텐트명으로 검색</p>
+        <input type="text" placeholder="검색어 입력"/>
+    </div>
+</div>
+<!-- //srchWrap end -->
+<script>
+    // url 처리
+    var nowURL = window.location.pathname;
+    console.log(nowURL)
+    if(nowURL.includes('/datalake/intent/list/date')) {
+        $('.srch-filter li').eq(0).addClass('on');
+    } else if(nowURL.includes('/datalake/intent/list/subject')) {
+        $('.srch-filter li').eq(1).addClass('on');
+    }
+    // srch-bar on/off
+    $('.srch-bar').hover(() => {
+        $('.srch-bar .placeholder').hide();
+        $('.srch-bar input').show();
+        $('.srch-bar input').focus();
+    },() => {
+        if($('.srch-bar input').focus()){
+            $('.srch-bar .placeholder').hide();
+            $('.srch-bar input').show();
+        }
+    });
+    $('.srch-bar input').blur(() => {
+        $('.srch-bar input').hide();
+        $('.srch-bar .placeholder').show();
+    });
+</script>
+
+<div class="boardWrap">
+    {% if intent_list %}
+    <ul class="board-wide-list entity-list w1500">
+        <li>
+            <p class="no">번호</p>
+            <p class="subject">인텐트명</p>        
+            <p class="date">등록일</p>
+        </li>
+        {% for intent in intent_list %}
+        <li>
+            <a href="{% url 'datalake:intent_detail' request.session.cSub request.session.cdSub intent.id %}"></a>
+            <p class="no">{{ forloop.counter }}</p>
+            <p class="subject">
+                {{ intent.subject }}
+                {% if intent.sentence_set.count > 0 %}
+                <span class="cnt">{{ intent.sentence_set.count }}</span>
+                {% endif %}
+            </p>        
+            <p class="date">{{ intent.create_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- //board-wide-list end -->
+
+    <div class="paginationWrap w1500">
+        <a href="{% url 'datalake:intent_create' %}"><div class="btn btn-intent-add">+</div></a>
+        <ul class="pagination">
+            <!-- 이전페이지 -->
+            {% if intent_list.has_previous %}
+            <li>
+                <a href="?page={{ intent_list.previous_page_number }}"></a>
+                이전
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a tabindex="-1" aria-disabled="true" href="#"></a>
+                이전
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in intent_list.paginator.page_range %}
+            {% if page_number >= intent_list.number|add:-5 and page_number <= intent_list.number|add:5 %}
+            {% if page_number == intent_list.number %}
+            <li class="active" aria-current="page">
+                <a href="?page={{ page_number }}"></a>
+                {{ page_number }}
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ page_number }}"></a>
+                {{ page_number }}
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if intent_list.has_next %}
+            <li>
+                <a href="?page={{ intent_list.next_page_number }}"></a>
+                다음
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a tabindex="-1" aria-disabled="true" href="#"></a>
+                다음
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <!-- //paginationWrap end -->
+    {% else %}
+    <p>등록된 인텐트가 없습니다.</p>
+    {% endif %}
+</div>
+<!-- //boardWrap end -->
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+{% include 'common/header.html' %}
+<body>
+    {% include 'common/nav.html' %}
+    <div class="container full">
+        <div class="inner">
+            <div class="status-comn">
+                <p class="status-comn-welcome">환영합니다!<br/>[<span class="userauth">관리자</span>] <span class="username">이승민</span>님</p>
+                <p class="status-comn-box"></p>
+                <p class="status-comn-etc">새 채팅<span>12345 개</span></p>
+                <p class="status-comn-etc">새 메일<span>12345 개</span></p>
+            </div>
+            <div class="status-right">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

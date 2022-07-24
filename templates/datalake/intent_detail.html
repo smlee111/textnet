@@ -1,0 +1,32 @@
+{% extends 'common/base_wide.html' %}
+{% block content %}
+
+<div class="board-detail w1500">
+    <p class="tit"><a href="/datalake/intent/list"><span class="link-back">←</span></a>{{ intent.subject }}</p>
+    <div class="cont">
+        {{ intent.content }}
+    </div>
+</div>
+
+<div class="board-reply w1500">
+    <div class="board-reply-input">
+        <form action="{% url 'datalake:sentence_create' intent.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="phrase" id="phrase"></textarea>
+        <input type="submit" value="등록">
+        </form>
+    </div>
+
+    <div class="board-reply-list">
+        <p class="tit">{{ intent.sentence_set.count }}개의 등록예문</p>
+        <ul>
+            {% for sentence in intent.sentence_set.all %}
+            <li>
+                {{ sentence.phrase }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% load static %}
+<div class="wide-sidebar-left">
+    <div class="btn-nav"></div>
+    <ul class="menu">
+        <li>
+            <a href="{% url 'datalake:home' request.session.cSub request.session.cdSub %}"></a>
+            <p class="ic">H</p>
+            <p class="txt">Home</p>
+        </li>
+        <li>
+            <a href="{% url 'datalake:intent_list' request.session.cSub request.session.cdSub %}"></a>
+            <p class="ic">I</p>
+            <p class="txt">Intent</p>
+        </li>
+        <li>
+            <a href="{% url 'datalake:entity_list' request.session.cSub request.session.cdSub %}"></a>
+            <p class="ic">E</p>
+            <p class="txt">Entity</p>
+        </li>
+        <!-- <li>
+            <a href="#"></a>
+            히스토리
+        </li> -->
+    </ul>
+</div>
+<div class="wide-sidebar-nav">
+    <ul class="menu">
+        <li>
+            <a href="/"></a>
+            홈
+        </li>
+        <li>
+            <a href="{% url 'textnet:project' %}"></a>
+            프로젝트
+        </li>
+        <li class="on">
+            <a href="{% url 'textnet:datalake' %}"></a>
+            데이터 레이크
+        </li>
+        {% if user.is_superuser %}
+        <li>
+            <a href="{% url 'admin:index' %}"></a>
+            관리자
+        </li>
+        {% endif %}
+    </ul>
+</div>
+<script>
+// url 처리
+var nowURL = window.location.pathname;
+console.log(nowURL)
+if(nowURL.includes('/home')) {
+    $('.wide-sidebar-left .menu li').eq(0).addClass('on');
+} else if(nowURL.includes('/intent')) {
+    $('.wide-sidebar-left .menu li').eq(1).addClass('on');
+} else if(nowURL.includes('/entity')) {
+    $('.wide-sidebar-left .menu li').eq(2).addClass('on');
+}
+
+// sidebar-nav animate
+$('.wide-sidebar-left .btn-nav').click(function(){
+    $(this).toggleClass('on');
+    $('.wide-sidebar-nav').toggleClass('on');
+});
+</script>

@@ -1,0 +1,30 @@
+{% extends 'common/base_wide.html' %}
+{% block content %}
+
+<form method="post">
+{% csrf_token %}
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    {% for field in form %}
+    {% if field.errors %}
+    <div>
+        <strong>{{ field.label }}</strong>
+        {{ field.errors }}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<!-- //오류표시 End -->
+<div class="box">
+    <label for="subject">엔티티명</label>
+    <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}">
+</div>
+<div class="box">
+    <label for="entry">대표어</label>
+    <textarea name="entry" id="entry">{{ form.entry.value|default_if_none:'' }}</textarea>
+</div>
+<input type="submit" value="저장" class="btn"/>
+</form>
+
+{% endblock %}

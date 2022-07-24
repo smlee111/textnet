@@ -1,0 +1,112 @@
+/* common.css */
+
+/* button */
+.btn {display: inline-block; background: #5c34a7; color: #fff; font-size:15px; font-weight: 600; padding: 12px 15px 11px;}
+
+/* nav */
+.nav {overflow: hidden; width: 100%; height: 60px; background: #fff; border-bottom: 1px solid #eee; transition: .2s; position: fixed;top: 0;left: 0; z-index: 998;}
+.nav .logo {line-height: 30px; letter-spacing: -0.3px; color:#000; font-size: 19px; position: absolute;top: 50%;left: 50px; transform: translateY(-50%);}
+.nav .symbol {display: inline-block; width: auto; height: 20px; border-radius: 3px; margin: 0 7px 0 0; position: relative;top: 4px;}
+.nav .key {font-weight: 800;}
+.nav .menu {float: left; overflow: hidden; padding: 0; margin: 13px 0 0 230px;}
+.nav .menu li {float: left; border-radius: 25px; font-size: 14px; font-weight: 500; transition: .15s; padding: 10px 14px 10px; margin: 0 20px 0 0; position: relative;}
+.nav .menu li:last-child {margin: 0;}
+.nav .menu li.on, .nav .menu li:hover {background: #5c34a7; color: #fff;}
+.nav .menu li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+.nav.nav-up {top: -82px;}
+.nav.nav-down {top: 0;}
+
+/* nav-user */
+.nav-user {float: right; overflow: hidden; width: 360px;}
+.nav-user > li {float: left; width: 60px; height: 60px; border-right: 1px solid #eee; position: relative;}
+.nav-user > li:first-child {border-left: 1px solid #eee;}
+.nav-user > li.thumb {background: url('/static/images/icon/ic-crown-w.png')no-repeat center,#333; background-size: 18px;}
+.nav-user > li.info {width: 240px; padding: 16px 25px;}
+.nav-user > li.info .name {font-size: 17px; font-weight: 700; margin: 0 0 1px;}
+.nav-user > li.info .status {color:#aaa; font-size: 12px; font-weight: 500;}
+.nav-user > li.info .status span {display: inline-block; width: 8px; height: 8px; background: #7ed320; border-radius: 100%; margin: 0 3px 0 0;}
+.nav-user > li.btn-pop-my-open {width: 60px; height: 60px; background: url('/static/images/icon/ic-verticaldots-g.png')no-repeat center; background-size: 16px; border-left: 1px solid #eee; transition: .2s; cursor: pointer;}
+.nav-user > li.btn-pop-my-open:hover {background: url('/static/images/icon/ic-verticaldots-w.png')no-repeat center,#5c34a7; background-size: 16px;}
+.nav-user > li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0; z-index: 1;}
+.nav-user > li img {display: block; width: 18px; margin: 14px auto 4px;}
+.nav-user > li:hover img {filter: contrast(0);}
+.nav-user > li .txt {text-align: center; color:#888; font-size:13px; font-weight: 500;}
+.nav-user > li:hover .txt {color:#666;}
+
+/* nav-pop-my */
+.nav-pop-my {overflow: hidden; width: 360px; background: #fff; border-left: 1px solid #eee; border-bottom: 1px solid #eee; transition: .2s; position: fixed;top: 0;right: -100%;}
+.nav-pop-my li {float: left; width: 70px; height: 60px; border-right: 1px solid #eee; padding: 0 10px; position: relative;}
+.nav-pop-my li:last-child {border-right: 0; border-left: 1px solid #eee;}
+.nav-pop-my .btn-pop-my-close {float: right; cursor: pointer;}
+.nav-pop-my li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0; z-index: 1;}
+.nav-pop-my li img {display: block; width: 18px; margin: 14px auto 4px;}
+.nav-pop-my .btn-pop-my-close > img {margin: 21px auto 0;}
+.nav-pop-my li:hover img {filter: contrast(0);}
+.nav-pop-my li .txt {text-align: center; color:#888; font-size:13px; font-weight: 500;}
+.nav-pop-my li:hover .txt {color:#666;}
+
+/* footer */
+.footer {width: 100%; background: #fff; line-height: 120px; text-align: center; font-size:12px;}
+
+/* container */
+/* basic */
+.container {width: 100%; min-height: 100vh; background: #eef2f5; padding: 60px 0 0 0;}
+.container.scrollTest {height: 3200px;}
+
+/* container full */
+/* basic */
+.container.full {background: #fff; padding: 80px 0 0 0;}
+.container.full .inner {overflow: hidden; width: calc(100% - 40px); height: calc(100vh - 83px - 40px); background: #fafafa; border-radius: 15px; margin: 0 auto;}
+/* status-comn */
+.container.full .inner .status-comn {float: left; width: 450px; height: 100%; background: rgb(103, 0, 169); border-radius: 15px; padding: 60px 50px 0;}
+.container.full .inner .status-comn-welcome {line-height: 40px; color: #fff; font-size:30px; font-weight: 600;}
+.container.full .inner .status-comn-box {width: 100%; height: 250px; background: #fff; border-radius: 10px; margin: 20px 0;}
+.container.full .inner .status-comn-etc {line-height: 40px; color: #fff; font-size:20px; font-weight: 500;}
+.container.full .inner .status-comn-etc span {float: right;}
+/* status-right */
+.container.full .inner .status-right {height: 100%; padding: 60px 50px 0 500px;}
+.container.full .inner .status-right .title {font-size: 30px; font-weight: 600; margin: 0 0 20px;}
+
+/* container wide */
+/* basic */
+.container.wide {background: #eef2f5; padding: 60px 360px 0 60px;}
+.container.wide .title-cate {overflow: hidden; width: 100%; height: 60px; background: #fff; border-bottom: 1px solid #eee; padding: 0 30px;}
+.container.wide .title-cate li {float: left;}
+.container.wide .title-cate li.cate {line-height: 60px; color:#999; font-size:15px; font-weight: 600;}
+.container.wide .title-cate li > img {width: 18px; margin: 19.5px 11px 0 0;}
+
+/* base_wide_sidebar_left */
+.wide-sidebar-left {width: 60px; height: 100vh; background: #8150dd; position: fixed;top: 0;left: 0; z-index: 998;}
+.wide-sidebar-left .btn-nav {width: 60px; height: 60px; background: url('/static/images/icon/ic-menu-w-on.png')no-repeat center,#5c34a7; background-size: 16px; cursor: pointer;}
+.wide-sidebar-left .btn-nav.on {background: url('/static/images/icon/ic-close-w.png')no-repeat center,#5c34a7; background-size: 18px;}
+.wide-sidebar-left .menu {overflow: hidden; padding: 1px 0 0;}
+.wide-sidebar-left .menu li {color:#fff; transition: background .2s; padding: 15px 0; position: relative;}
+.wide-sidebar-left .menu li:hover {background: #5c34a7; outline: 1px solid #542d9d;}
+.wide-sidebar-left .menu li.on {background: #5c34a7; outline: 1px solid #542d9d;}
+.wide-sidebar-left .menu li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+.wide-sidebar-left .menu li .ic {text-align: center; font-size:20px; font-weight: 600; margin: 0 0 3px;}
+.wide-sidebar-left .menu li .txt {text-align: center; font-size:11px; font-weight: 500;}
+
+/* .wide-sidebar-nav */
+.wide-sidebar-nav {width: calc(100% - 360px); height: 60px; background: #fff; border-bottom: 1px solid #eee; transition: 0s; padding: 0 0 0 60px; position: fixed;top: 0;left: -100%; z-index: 997;}
+.wide-sidebar-nav.on {transition: .2s; left: 0;}
+.wide-sidebar-nav .menu {overflow: hidden; padding: 13px 0; position: relative;left: 30px;}
+.wide-sidebar-nav .menu li {float: left; border-radius: 25px; font-size: 14px; font-weight: 500; transition: .15s; padding: 10px 14px 10px; margin: 0 20px 0 0; position: relative;}
+.wide-sidebar-nav .menu li:last-child {margin: 0;}
+.wide-sidebar-nav .menu li.on, .wide-sidebar-nav .menu li:hover {background: #5c34a7; color: #fff;}
+.wide-sidebar-nav .menu li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+
+/* base_wide_sidebar_right */
+.wide-sidebar-right {width: 360px; height: 100vh; background: #fff; border-left: 1px solid #eee; position: fixed;top: 0;right: 0; z-index: 995;}
+
+/* base_wide_top */
+.wide-top {overflow: hidden; width: 100%; height: 60px; background: #fff; border-left: 1px solid #eee; border-bottom: 1px solid #eee; padding: 0 0 0 60px; position: fixed;top: 0;left: 0; z-index: 996;}
+.wide-top .menu {overflow: hidden; float: left;}
+.wide-top .menu li {float: left; overflow: hidden; height: 60px; border-right: 1px solid #eee; padding: 0 23px; position: relative;}
+.wide-top .menu li:last-child {border-right: 0;}
+.wide-top .menu li.home {padding: 0 25px 0 20px;}
+.wide-top .menu li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+.wide-top .menu li img {float: left; width: 16px; margin: 22px 4px 0 0;}
+.wide-top .menu li .txt {float: left; line-height: 60px; color:#aaa; font-size:13px; font-weight: 500;}
+.wide-top .menu li.home img {width: 22px; margin: 19px 5px 0 0;}
+.wide-top .menu li.home .logo {float: left; line-height: 60px; letter-spacing: -0.5px; font-size:14px; font-weight: 900;}

@@ -1,0 +1,89 @@
+/* main.css */
+
+/* srch */
+.srchWrap {overflow: hidden; width: calc(100% - 60px); margin: 30px auto 0; position: relative;}
+.srchWrap .srch-filter {float: left; overflow: hidden; padding: 12px 0 0;}
+.srchWrap .srch-filter li {float: left; border: 1px solid #ccc; border-radius: 20px; line-height: 16px; color:#aaa; font-size: 13px; font-weight: 400; cursor: pointer; padding: 5px 15px 6px; margin: 0 5px 0 0; position: relative;}
+.srchWrap .srch-filter li.on {border: 2px solid #5c34a7; color:#5c34a7; font-weight: 700;}
+.srchWrap .srch-filter li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+.srchWrap .srch-bar {float: right; overflow: hidden; background: #fff; border: 1px solid #ddd; border-radius: 20px; cursor: pointer; padding: 12px 15px 13px;}
+.srchWrap .srch-bar img {float: left; width: 16px; filter: contrast(100%); margin: 0 7px 0 0;}
+.srchWrap .srch-bar .placeholder {float: left; line-height: 18px; color:#aaa; font-size: 13px; font-weight: 500;}
+.srchWrap .srch-bar input {display: none; background: transparent; border: none; line-height: 16px; font-size: 13px; font-weight: 500;}
+.srchWrap .srch-bar input::placeholder {color:#aaa; font-size: 13px; font-weight: 500;}
+
+/* prj-list */
+.container.full .inner .status-right .prj-list {overflow: hidden;}
+.container.full .inner .status-right .prj-list li {float: left; width: 49.5%; background: #ebecf0; border-radius: 10px; transition: .2s; cursor: pointer; margin: 0 1% 1% 0;}
+.container.full .inner .status-right .prj-list li:nth-child(2n) {margin: 0 0 1% 0;}
+.container.full .inner .status-right .prj-list li:hover {background: #5c34a7; color:#fff;}
+.container.full .inner .status-right .prj-list li .tit {font-size:20px; font-weight: 600; border-bottom: 1px solid #fff; padding: 23px 40px;}
+.container.full .inner .status-right .prj-list li .tit .manager {float: right; font-size:16px; font-weight: 500; margin: 4.5px 0 0;}
+.container.full .inner .status-right .prj-list li .info {padding: 23px 40px;}
+.container.full .inner .status-right .prj-list li .info p {line-height: 25px;}
+
+/* dataCate-list */
+.container.full .inner .status-right .dataCate-list {overflow: hidden; display: none;}
+.container.full .inner .status-right .dataCate-list.on {display: block;}
+.container.full .inner .status-right .dataCate-list li {float: left; width: 24.25%; background: #ebecf0; border-radius: 10px; font-size:16px; font-weight: 500; transition: .2s; cursor: pointer; padding: 25px; margin: 0 1% 1% 0; position: relative;}
+.container.full .inner .status-right .dataCate-list li:nth-child(4n) {margin: 0 0 1% 0;}
+.container.full .inner .status-right .dataCate-list li:hover {background: #5c34a7; color:#fff;}
+.container.full .inner .status-right .dataCate-list li.back {background: #aaa; color:#fff;}
+.container.full .inner .status-right .dataCate-list li.back:hover {background: #333;}
+.container.full .inner .status-right .dataCate-list li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+
+/* board-wide-list */
+/* basic */
+.boardWrap {padding: 30px;}
+.board-wide-list > li {overflow: hidden; background: #fff; border-bottom: 2px solid #eee; padding: 22px 0; position: relative;}
+.board-wide-list > li:last-child {border-bottom: 0;}
+.board-wide-list > li:hover {background: #ddd;}
+.board-wide-list > li p {float: left; text-align: center; line-height: 23px; font-size:15px; font-weight: 400;}
+.board-wide-list > li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0; z-index: 1;}
+.board-wide-list > li:first-child {background: #5c34a7; border-bottom: 0; padding: 10px 0;}
+.board-wide-list > li:first-child p {color:#fff; font-size: 13px; font-weight: 300;}
+/* entity-list */
+.entity-list > li .no {width: 6%;}
+.entity-list > li .subject {width: 15%; text-align: left;}
+.entity-list > li .subject .cnt {display: inline-block; width: 18px; background: #5c34a7; border-radius: 100%; text-align: center; line-height: 18px; color:#fff; font-size:11px; font-weight: 500; margin: 0 0 0 5px;}
+.entity-list > li .date {float: right; width: 15%; color: #aaa; font-size:13px;}
+.entity-list > li .entry {float: left; overflow: hidden; width: 64%; height: 23px;}
+.entity-list > li .entry li {float: left; background: #aaa; border-radius: 13px; line-height: 16px; color:#fff; font-size:12px; font-weight: 300; padding: 3px 9.5px 4px 9px; margin: 0 3px 0 0;}
+.entity-list > li .entry li:first-child {background: #5c34a7;}
+/* entity-detail-list */
+.entity-detail-list > li:hover {background: #fff;}
+.entity-detail-list > li:first-child:hover {background: #5c34a7;}
+.entity-detail-list > li .subject {width: 30%; text-align: left; text-indent: 50px;}
+.entity-detail-list > li .subject .cnt {display: inline-block; width: 18px; background: #5c34a7; border-radius: 100%; text-align: center; line-height: 18px; color:#fff; font-size:11px; font-weight: 500; margin: 0 0 0 5px;}
+.entity-detail-list > li .entry {float: left; width: calc(70% - 50px); height: auto;}
+.entity-detail-list > li .entry li {float: left; background: #aaa; border-radius: 13px; line-height: 16px; color:#fff; font-size:12px; font-weight: 300; padding: 3px 9.5px 4px 9px; margin: 0 3px 5px 0;}
+.entity-detail-list > li .entry li:first-child {background: #5c34a7;}
+.entity-detail-list > li .entry li:last-child {background: #8150dd; cursor: pointer; margin: 0;}
+.entity-detail-list > li .entry li:last-child:hover {background: #5c34a7;}
+.entity-detail-list > li .entry li:last-child input {background: #eee; padding: 3.5px 5px;}
+
+/* pagination */
+.paginationWrap {height: 28px; position: relative;}
+.paginationWrap.w1500 {margin: 15px auto 0;}
+.pagination {overflow: hidden; display: inline-block; position: absolute;left: 50%; transform: translateX(-50%);}
+.pagination li:first-child {width: 40px;}
+.pagination li {float: left; width: 28px; height: 28px; border: 1px solid #eee; line-height: 27px; text-align: center; font-size:12px; margin: 0 1px 0 0; position: relative;}
+.pagination li:last-child {width: 40px; margin: 0;}
+.pagination li.active {background: #5c34a7; border: 1px solid #5c34a7; color:#fff; font-weight: 600;}
+.pagination li.disabled {background: #bbb; border: 1px solid #bbb; color:#ddd;}
+.pagination li a {width: 100%; height: 100%; position: absolute;top: 0;left: 0; z-index: 1;}
+.pagination li.disabled a {cursor: default;}
+
+/* info-entity-detail */
+.info-entity-detail {overflow: hidden; padding: 30px 30px 0;}
+.info-entity-detail li {float: left; width: 48.9%; height: 150px; background: #fff; padding: 30px; margin: 0 2.2% 0 0;}
+.info-entity-detail li:nth-child(2n) {margin: 0;}
+.info-entity-detail li .info-box {overflow: hidden;}
+.info-entity-detail li .w30 {float: left; width: 30%;}
+.info-entity-detail li .w70 {float: left; width: 70%;}
+.info-entity-detail li .tit {color:#aaa; font-size:13px; font-weight: 500; margin: 0 0 5px;}
+.info-entity-detail li .txt {font-size:15px; font-weight: 500; margin: 0 0 15px;}
+.info-entity-detail li .txt.m0 {margin: 0;}
+.info-entity-detail li .sub {font-size:18px; font-weight: 500; padding: 5px 12px;}
+.info-entity-detail li .sub:focus {background: #eee;}
+.info-entity-detail li .sub::placeholder {color:#aaa; font-size:20px; font-weight: 400;}

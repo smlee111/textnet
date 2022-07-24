@@ -1,0 +1,54 @@
+{% extends 'common/base_wide.html' %}
+{% block content %}
+
+<ul class="info-entity-detail">
+    <li>
+        <p class="tit">엔티티명</p>
+        <input type="text" value="{{ entity.subject }}" placeholder="엔티티명을 입력해주세요." class="box-g en"/>
+    </li>
+    <li>
+        <div class="info-box w30">
+            <p class="tit">등록자</p>
+            <p class="txt">admin</p>
+        </div>
+        <div class="info-box w70">
+            <p class="tit">등록일</p>
+            <p class="txt">{{ entity.create_date }}</p>
+        </div>
+        
+        <div class="info-box w30">
+            <p class="tit">수정자</p>
+            <p class="txt m0">admin</p>
+        </div>
+        <div class="info-box w70">
+            <p class="tit">수정일</p>
+            <p class="txt m0">{{ entity.create_date }}</p>
+        </div>
+    </li>
+</ul>
+
+<div class="boardWrap">
+    <ul class="board-wide-list entity-detail-list w1500">
+        <li>
+            <p class="subject">대표어</p>        
+            <p class="entry">동의어</p>
+        </li>
+        <li>
+            <p class="subject">
+                <input type="text" value="{{ entity.entry }}" placeholder="대표어를 입력해주세요." class="box-g"/>
+            </p>
+            <ul class="entry">
+                <li>{{ entity.entry }}</li>
+                {% for synonym in entity.synonym_set.all %}
+                <li>
+                    {{ synonym.entry }}
+                </li>
+                {% endfor %}
+                <li>+</li>
+            </ul>
+        </li>
+    </ul>
+    <!-- //board-wide-list end -->
+</div>
+
+{% endblock %}

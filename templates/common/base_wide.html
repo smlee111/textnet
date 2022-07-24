@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+{% include 'common/header.html' %}
+<body>
+    {% include 'common/base_wide_sidebar_left.html' %}
+    {% include 'common/base_wide_sidebar_right.html' %}
+    {% include 'common/base_wide_top.html' %}
+    <div class="container wide">
+        <ul class="title-cate">
+            <li><img src="/static/images/icon/ic-folder-g.png" alt=""></li>
+            <li class="cate">{{ request.session.cVal }} › {{ request.session.cdVal }}</li>
+        </ul>        
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
