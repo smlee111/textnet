@@ -1,3 +1,4 @@
+from datetime import timezone
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -64,6 +65,19 @@ class Intent(models.Model):
         return self.subject
     
 class Sentence(models.Model):
+    """
+    인텐트-학습문장 모델
+    """
+    CategoryDepth = models.ForeignKey(CategoryDepth, on_delete=models.CASCADE)
+    intent = models.ForeignKey(Intent, on_delete=models.CASCADE)
+    phrase = models.CharField(max_length=1000)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    create_date = models.DateTimeField()
+    
+    def __str__(self):
+        return self.phrase
+
+class Response(models.Model):
     """
     인텐트-학습문장 모델
     """

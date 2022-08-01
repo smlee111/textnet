@@ -9,7 +9,28 @@
     <div class="container wide">
         <ul class="title-cate">
             <li><img src="/static/images/icon/ic-folder-g.png" alt=""></li>
-            <li class="cate">{{ request.session.cVal }} › {{ request.session.cdVal }}</li>
+            <li class="cate">
+                {{ request.session.cVal }}
+                › {{ request.session.cdVal }}
+
+                {% if entity_list %}
+                › 엔티티
+                {% endif %}
+
+                {% if intent_list %}
+                › 인텐트
+                {% endif %}
+
+                {% if entity.subject %}
+                › 엔티티
+                › {{ entity.subject }}
+                {% endif %}
+
+                {% if intent.subject %}
+                › 인텐트
+                › {{ intent.subject }}
+                {% endif %}
+            </li>
         </ul>        
         {% block content %}
         {% endblock %}

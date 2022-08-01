@@ -25,30 +25,16 @@
 {% endfor %}
 
 <script>
-    // depth fadeIn/Out
-    $('.dataCate-list.main li.text').click(function(){
-        $('.dataCate-list.main').hide();
-        $('.dataCate-list.depth').hide();
-        $('.dataCate-list.depth.text').fadeIn(200);
-    });
-    $('.dataCate-list.main li.image').click(function(){
-        $('.dataCate-list.main').hide();
-        $('.dataCate-list.depth').hide();
-        $('.dataCate-list.depth.image').fadeIn(200);
-    });
-    $('.dataCate-list.main li.mp3').click(function(){
-        $('.dataCate-list.main').hide();
-        $('.dataCate-list.depth').hide();
-        $('.dataCate-list.depth.mp3').fadeIn(200);
-    });
-    $('.dataCate-list.main li.mp4').click(function(){
-        $('.dataCate-list.main').hide();
-        $('.dataCate-list.depth').hide();
-        $('.dataCate-list.depth.mp4').fadeIn(200);
-    });
-    $('.dataCate-list.depth .back').click(function(){
-        $('.dataCate-list.depth').hide();
-        $('.dataCate-list.main').fadeIn(200);
+    $('.dataCate-list li').click(function(){
+        let selCate = $(this).attr('class');
+        if(selCate != 'back'){
+            $('.dataCate-list.main').hide();
+            $('.dataCate-list.depth').hide();
+            $(`.dataCate-list.depth.${selCate}`).fadeIn(200);
+        }else{
+            $('.dataCate-list.depth').hide();
+            $('.dataCate-list.main').fadeIn(200);
+        }
     });
 </script>
 

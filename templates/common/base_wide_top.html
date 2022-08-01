@@ -4,23 +4,31 @@
 <div class="wide-top">
     <ul class="menu">
         <li class="home">
-            <a href=""></a>
+            <a href="{% url 'datalake:home' request.session.cSub request.session.cdSub %}"></a>
             <img src="/static/images/icon/ic-dl3-c.png" alt="">
             <p class="logo">DATA LAKE</p>
         </li>
+        {% if user.is_superuser %}
         <li>
-            <a href="#"></a>
-            <img src="/static/images/icon/ic-srch-g.png" alt="">
+            <a href="{% url 'datalake:entity_upload' %}"></a>
+            <img src="/static/images/icon/ic-upload.png" alt="">
+            <p class="txt">entity upload</p>
         </li>
         <li>
-            <a href="#"></a>
-            <img src="/static/images/icon/ic-qm-g.png" alt="">
-            <p class="txt">Guide</p>
+            <a href="{% url 'datalake:intent_upload' %}"></a>
+            <img src="/static/images/icon/ic-upload.png" alt="">
+            <p class="txt">intent upload</p>
+        </li>
+        {% endif %}        
+        <li>
+            <a href="{% url 'datalake:entity_download' %}"></a>
+            <img src="/static/images/icon/ic-download.png" alt="">
+            <p class="txt">entity download</p>
         </li>
         <li>
-            <a href="#"></a>
-            <img src="/static/images/icon/ic-del-g.png" alt="">
-            <p class="txt">delete</p>
+            <a href="{% url 'datalake:intent_download' %}"></a>
+            <img src="/static/images/icon/ic-download.png" alt="">
+            <p class="txt">intent download</p>
         </li>
     </ul>
     <ul class="nav-user">
@@ -31,6 +39,7 @@
             <p class="status"><span></span>online</p>
         </li>
         <li class="btn-pop-my-open">
+            <img src="{% static 'images/icon/ic-verticaldots-b.png' %}" alt="">
         </li>
         {% else %}
         <li>

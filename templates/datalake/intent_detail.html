@@ -1,32 +1,23 @@
 {% extends 'common/base_wide.html' %}
 {% block content %}
 
-<div class="board-detail w1500">
-    <p class="tit"><a href="/datalake/intent/list"><span class="link-back">←</span></a>{{ intent.subject }}</p>
-    <div class="cont">
-        {{ intent.content }}
-    </div>
-</div>
-
-<div class="board-reply w1500">
-    <div class="board-reply-input">
-        <form action="{% url 'datalake:sentence_create' intent.id %}" method="post">
-        {% csrf_token %}
-        <textarea name="phrase" id="phrase"></textarea>
-        <input type="submit" value="등록">
-        </form>
-    </div>
-
-    <div class="board-reply-list">
-        <p class="tit">{{ intent.sentence_set.count }}개의 등록예문</p>
-        <ul>
-            {% for sentence in intent.sentence_set.all %}
-            <li>
-                {{ sentence.phrase }}
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="detailWrap intent">
+    <p class="tit first"><img src="/static/images/icon/ic-quote.png" alt="">등록예문</p>
+    <ul class="list">
+        <li>
+            <img src="/static/images/icon/ic-text.png" alt="">
+            <form action="{% url 'datalake:sentence_create' intent.id %}" method="post"></form>
+            <input type="text"/>
+            </form>
+        </li>
+        {% for sentence in intent.sentence_set.all %}
+        <li>
+            {{ sentence.phrase }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="tit"><img src="/static/images/icon/ic-quote.png" alt="">응답</p>
+    <textarea name="response" value="{{ response.phrase }}" class="txt">{% for response in intent.response_set.all %}{{ response.phrase }}{% endfor %}</textarea>
 </div>
 
 {% endblock %}

@@ -1,16 +1,9 @@
 {% extends 'common/base_wide.html' %}
 {% block content %}
 
-<ul class="title-depth">
-    <li>
-        Entity
-    </li>
-</ul>
-<!-- //title-depth end -->
-
 <div class="srchWrap">
     <ul class="srch-filter">
-        <li>
+        <li class="on">
             <a href="#"></a>
             등록일순
         </li>
@@ -92,12 +85,12 @@
             {% if entity_list.has_previous %}
             <li>
                 <a href="?page={{ entity_list.previous_page_number }}"></a>
-                이전
+                <img src="/static/images/icon/ic-arrowLeft.png" alt="">
             </li>
             {% else %}
             <li class="disabled">
                 <a tabindex="-1" aria-disabled="true" href="#"></a>
-                이전
+                <img src="/static/images/icon/ic-arrowLeft.png" alt="">
             </li>
             {% endif %}
             <!-- 페이지리스트 -->
@@ -120,12 +113,12 @@
             {% if entity_list.has_next %}
             <li>
                 <a href="?page={{ entity_list.next_page_number }}"></a>
-                다음
+                <img src="/static/images/icon/ic-arrowRight.png" alt="">
             </li>
             {% else %}
             <li class="disabled">
                 <a tabindex="-1" aria-disabled="true" href="#"></a>
-                다음
+                <img src="/static/images/icon/ic-arrowRight.png" alt="">
             </li>
             {% endif %}
         </ul>
